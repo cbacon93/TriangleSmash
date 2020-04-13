@@ -1,0 +1,31 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(ItemDropper))]
+public class ChestController : MonoBehaviour
+{
+    private bool is_alive = true;
+    
+    void Update()
+    {
+        if (!is_alive)
+        {
+            if (!GetComponent<ParticleSystem>().isPlaying)
+            {
+                Destroy(gameObject);
+            }
+            return;
+        }
+    }
+    
+    public void OnHit()
+    {
+        Destroy(GetComponent<SpriteRenderer>());
+        Destroy(GetComponent<BoxCollider2D>());
+        is_alive = false;
+        
+        GetComponent<ParticleSystem>().Play();
+        GetComponent<ItemDropper>().Drop();
+    }
+}
