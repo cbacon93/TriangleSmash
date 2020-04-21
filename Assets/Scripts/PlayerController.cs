@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public float maxHealth = 3f;
     public float shootingRate = 5f;
     public GameObject projectile;
+    public AudioSource dieSound;
+    public AudioSource collectSound;
     
     private static PlayerController self = null;
     private Rigidbody2D rb;
@@ -88,6 +90,7 @@ public class PlayerController : MonoBehaviour
             Destroy(GetComponent<SpriteRenderer>());
             Destroy(GetComponent<PolygonCollider2D>());
             GetComponent<ParticleSystem>().Play();
+            dieSound.Play();
         }
     }
     
@@ -118,6 +121,12 @@ public class PlayerController : MonoBehaviour
     {
         if (self == null) return Vector3.zero;
         return self.transform.position;
+    }
+    
+    public static void PlayCollectSound()
+    {
+        if (self == null) return;
+        self.collectSound.Play();
     }
     
     

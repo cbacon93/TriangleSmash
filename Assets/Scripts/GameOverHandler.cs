@@ -18,6 +18,7 @@ public class GameOverHandler : MonoBehaviour
     {
         if (self == null) return;
         self.canvas.SetActive(true);
+        self.GetComponent<AudioSource>().Play();
         
         self.textField.text = "You got a score of " + CoinCounter.GetCoins() + " and took " + TimerController.GetTime() + " Minutes!";
     }

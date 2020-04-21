@@ -31,7 +31,8 @@ public class CollectableController : MonoBehaviour
             {
                 GameEvents.self.OnCollectingKey(keyId);
             }         
-            
+
+            PlayerController.PlayCollectSound();
             Destroy(gameObject);
         }
     }

@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour
     
     public GameObject projectile;
     
+    public AudioSource dieSound;
+    
     private bool is_alive = true;
     private float shootingTimeout = 2f;
     private Rigidbody2D rb;
@@ -93,6 +95,7 @@ public class EnemyController : MonoBehaviour
             is_alive = false;
             
             GetComponent<ParticleSystem>().Play();
+            dieSound.Play();
             
             GetComponent<ItemDropper>().Drop();
         }

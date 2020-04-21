@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(ItemDropper))]
 public class ChestController : MonoBehaviour
 {
+    public AudioSource dieSound;
     private bool is_alive = true;
     
     void Update()
@@ -26,6 +27,7 @@ public class ChestController : MonoBehaviour
         is_alive = false;
         
         GetComponent<ParticleSystem>().Play();
+        dieSound.Play();
         GetComponent<ItemDropper>().Drop();
     }
 }
